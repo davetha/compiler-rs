@@ -22,11 +22,8 @@ pub(crate) struct Printer<'a> {
     pub(crate) frontmatter_info: FrontmatterInfo,
     pub(crate) has_embedded_parse_errors: bool,
     pub(crate) expressions_disabled: bool,
-    /// Generated range of the render scope's outline label and the fence it names.
-    pub(crate) scope_label: Option<(GeneratedRange, SourceRange)>,
-    /// Zero-length `(generated, original)` anchors that give each detached chunk boundary one edit.
+    pub(crate) outline_label: Option<(GeneratedRange, SourceRange)>,
     pub(crate) edit_anchors: Vec<(u32, u32)>,
-    /// Generated ranges whose mapped text opts out of editor features.
     pub(crate) featureless: Vec<GeneratedRange>,
 }
 
@@ -46,7 +43,7 @@ impl<'a> Printer<'a> {
             frontmatter_info: FrontmatterInfo::default(),
             has_embedded_parse_errors: false,
             expressions_disabled: false,
-            scope_label: None,
+            outline_label: None,
             edit_anchors: Vec::new(),
             featureless: Vec::new(),
         }
